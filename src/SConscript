@@ -31,7 +31,8 @@ Import('env')
 
 env.Append(CPPDEFINES = [('BUILD_BASE_DIR', '\\"' + env["BUILD_BASE_DIR"] + '\\"')])
 env.Append(CPPPATH = ['src/include'])
-env.Append(CCFLAGS = ['-Werror', '-Wall', '-Wextra', '-fmax-errors=1', '-std=c++14', '-pthread'])
+# env.Append(CCFLAGS = ['-Werror', '-Wall', '-Wextra', '-fmax-errors=1', '-std=c++14', '-pthread'])
+env.Append(CCFLAGS = ['-Wall', '-Wextra', '-fmax-errors=1', '-std=c++14', '-pthread']) # remove Werror --rbshi
 
 env.Append(LINKFLAGS = ['-std=c++11', '-static-libgcc', '-static-libstdc++', '-pthread'])
 env.Append(LIBS = ['config++', 'yaml-cpp', 'ncurses'])

@@ -52,17 +52,17 @@
       std::cerr << "ERROR: setting name exception at: " << e.getPath() << std::endl;\
       exit(1);                                                                      \
     }                                                                               \
-    catch (YAML::KeyNotFound e)                                                     \
+    catch (YAML::KeyNotFound& e)                                                     \
     {                                                                               \
       std::cerr << "ERROR: " << e.msg << ", at line: " << e.mark.line+1<< std::endl;\
       exit(1);                                                                      \
     }                                                                               \
-    catch (YAML::InvalidNode e)                                                     \
+    catch (YAML::InvalidNode& e)                                                     \
     {                                                                               \
       std::cerr << "ERROR: " << e.msg << ", at line: " << e.mark.line+1<< std::endl;\
       exit(1);                                                                      \
     }                                                                               \
-    catch (YAML::BadConversion e)                                                   \
+    catch (YAML::BadConversion& e)                                                   \
     {                                                                               \
       std::cerr << "ERROR: " << e.msg << ", at line: " << e.mark.line+1<< std::endl;\
       exit(1);                                                                      \
@@ -92,7 +92,7 @@ CompoundConfigNode CompoundConfigNode::lookup(const char *path) const {
       // exception on our own.
       try {
         YNode[path].as<int>(); // force an exception!
-      } catch (YAML::Exception e) {
+      } catch (YAML::Exception& e) {
         throw YAML::KeyNotFound(e.mark, std::string(path));
       }
     }
